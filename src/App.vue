@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Header/>
+    <router-view></router-view>  
+    <Footer v-show="$route.meta.showFooter"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Header from './components/Header/index.vue'
+  import Footer from './components/Footer/index.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    components: {Header, Footer},
+    mounted() {
+      // 当 APP组件 挂载完毕，Vuex 的 actions 去向服务器发送请求获取数据，然后把数据存放在 state 中
+      // 将请求放在 APP组件 中的好处就是保证请求只发送一次
+      // 放在别的里面来回切换路由显示的时候会一直发请求，这样不好
+      this.$store.dispatch("home/categoryList");
+      this.$store.dispatch("home/bannerList");
+      this.$store.dispatch("home/floorList")
+    },
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
