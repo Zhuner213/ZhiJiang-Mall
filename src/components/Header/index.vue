@@ -16,14 +16,14 @@
           </p>
         </div>
         <div class="typeList">
-          <a href="###">枝江商城首页</a>
-          <a href="###">我的购物车</a>
-          <a href="###">我的枝江</a>
-          <a href="###">枝江商城会员</a>
-          <a href="###">企业采购</a>
-          <a href="###">关注嘉然</a>
-          <a href="###">合作招商</a>
-          <a href="###">商家后台</a>
+          <a>枝江商城首页</a>
+          <a @click="goCart">我的购物车</a>
+          <a>我的枝江</a>
+          <a>枝江商城会员</a>
+          <a>企业采购</a>
+          <a>关注嘉然</a>
+          <a>合作招商</a>
+          <a>商家后台</a>
         </div>
       </div>
     </div>
@@ -107,6 +107,10 @@ export default {
     userLogout() {
       // 向服务器发请求退出登录，
       this.$store.dispatch('users/userLogout')
+    },
+    // 点击 '我的购物车' 跳转到购物车页面
+    goCart() {
+      this.$router.push('/shopcart')
     }
   },
   mounted() {

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+// 引入 api 文件
+import * as api from './api'
 // 引入路由文件
 import {router} from './router'
 // 引入 TypeNav 组件
@@ -25,7 +27,10 @@ new Vue({
   render: h => h(App),
   router,
   store,
-  beforeCreate() { // 安装全局事件总线
+  beforeCreate() { 
+    // 安装全局事件总线
     Vue.prototype.$bus = this
+    // 在 Vue 的原型上存放我们封装的所有 api 方法
+    Vue.prototype.$api = api
   }
 }).$mount('#app')

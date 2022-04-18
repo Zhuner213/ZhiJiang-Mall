@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "userAddress": "枝江市大头区",
+        "userId": 1,
+        "consignee": "Ava",
+        "phoneNum": "11111111111",
+        "isDefault": 1
+    },
+    {
+        "id": 2,
+        "userAddress": "枝江市牛牛区",
+        "userId": 2,
+        "consignee": "Bella",
+        "phoneNum": "22222222222",
+        "isDefault": 0
+    },
+    {
+        "id": 3,
+        "userAddress": "枝江市东北区",
+        "userId": 3,
+        "consignee": "Carol",
+        "phoneNum": "33333333333",
+        "isDefault": 0
+    },
+    {
+        "id": 4,
+        "userAddress": "枝江市儿童区",
+        "userId": 4,
+        "consignee": "Diana",
+        "phoneNum": "44444444444",
+        "isDefault": 0
+    },
+    {
+        "id": 5,
+        "userAddress": "枝江市火锅区",
+        "userId": 5,
+        "consignee": "Eileen",
+        "phoneNum": "55555555555",
+        "isDefault": 0
+    }
+]

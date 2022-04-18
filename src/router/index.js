@@ -24,15 +24,15 @@ export const router = new VueRouter({
 })
 
 // 设置全局路由前置守卫
-router.beforeEach((to, from, next) => {
-    console.log('beforeEach', to, from)
-    next()
-})
+// router.beforeEach((to, from, next) => {
+//     console.log('beforeEach', to, from)
+//     next()
+// })
 
 // 设置全局路由后置守卫
-router.afterEach((to, from) => {
-    console.log('afterEach', to, from)
-})
+// router.afterEach((to, from) => {
+//     console.log('afterEach', to, from)
+// })
 
 // 重写 push 方法
 

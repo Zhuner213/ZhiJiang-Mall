@@ -31,6 +31,8 @@ const actions = {
         const response = await reqUserLogin(infoObj)
         if(response.code == 200) {
             console.log('登录成功')
+            // 将登录成功用户的 token 进行本地存储
+            localStorage.setItem('token',response.data.token)
             return response.data
         }else {
             throw new Error(response.message)
@@ -48,17 +50,27 @@ const actions = {
         }
     },
     // 获取登录用户信息（自动登录）
+    // 自动登录的前提是本地存储有用户token，然后你本地有的话发请求的请求头中的 token才不为 null
+    // 若是本地没有存储用户token，则不应判断进入自动登录的流程
     async getUserInfo({commit}) {
         const response = await reqGetUserInfo()
         if(response.code == 200) {
             commit('GETUSERINFO',response.data)
             console.log('获取用户信息成功')
         }else {
-            // 返回code208，显示'未登录'，这是服务器那边你的token已经失效了
-            // 此时删除本地token，跳转到登录页，提醒用户信息过期需重新登录
-            localStorage.clear('token')
-            router.push('/login')
-            alert('登录信息过期，请重新登录')
+            //走else说明可能是两种情况：（分为 本地存储着token 和 本地未存储token）
+            //  1.（本地未存储token）用户以游客状态进入，还未进行过登录操作 或 用户退出了登录
+            if(!localStorage.getItem('token')) {
+                console.log('你现在是游客状态或你已经退出了登录',response)
+            }else {
+            //  2.（本地存储着token）用户已经登录过了，
+                // 返回code208，显示'未登录'，这是服务器那边你的token已经失效了
+                // PS：之前的问题是，假如用户以游客身份进来，我这里提醒用户登录过期需重新登录并跳转到登录页了
+                // 这时要提醒用户登录过期了，并删除本地存储的token，
+                console.log('你已经登录了但服务器显示你未登录',response)
+                localStorage.clear('token')
+                alert('登录已过期，请重新登录')
+            }
             
         }
     } 

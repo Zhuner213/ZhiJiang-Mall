@@ -6,6 +6,8 @@ import Search from '../pages/Search'
 import Detail from '../pages/Detail'
 import AddCartSuccess from '../pages/AddCartSuccess'
 import ShopCart from '../pages/ShopCart'
+import Trade from '../pages/Trade'
+import Pay from '../pages/Pay'
 
 export default [
     {
@@ -61,6 +63,22 @@ export default [
             showFooter: true // 在当前路由是否展示 Footer组件
         }
 
+    },
+    {
+        name: 'trade',
+        path: '/trade',
+        component: Trade,
+        meta: {
+            showFooter: true // 在当前路由是否展示 Footer组件
+        }
+    },
+    {
+        name: 'pay',
+        path: '/pay',
+        component: Pay,
+        meta: {
+            showFooter: true // 在当前路由是否展示 Footer组件
+        }
     },
     // 进行路由的重定向，使页面一进去就是主页
     {

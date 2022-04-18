@@ -70,9 +70,7 @@
         }
         // 点击登录按钮，向服务器发送请求获取登录数据
         try {
-          const {token} = await this.$store.dispatch('users/userLogin', infoObj)
-          // 将登录成功用户的 token 进行本地存储
-          localStorage.setItem('token',token)
+          await this.$store.dispatch('users/userLogin', infoObj)
           // 用户登录成功就会自动跳转到 home首页
           this.$router.push('/home')
         } catch (error) {

@@ -2,15 +2,22 @@
 import myAxios from "./request"; 
 import mockAxios from './mockAjax'
 
-// 三级联动接口
-// /api/product/getBaseCategoryList     请求方式：get   无参数
-export const reqCategoryList = () => myAxios({url:'/product/getBaseCategoryList',method:'get'})
+// mock接口
 
 // 获取首页 banner 轮播图的 mock数据
 export const reqBannerList = () => mockAxios({url:'/banner',method:'get'})
 
 // 获取首页 Floor组件整体的 mock数据
 export const reqFloorList = () => mockAxios({url:'/floor',method:'get'})
+
+// 获取收件人信息的 mock数据
+export const reqUserAddressList = () => mockAxios({url:'/userAddressList',method:'get'})
+
+// 真实API接口
+
+// 三级联动接口
+// /api/product/getBaseCategoryList     请求方式：get   无参数
+export const reqCategoryList = () => myAxios({url:'/product/getBaseCategoryList',method:'get'})
 
 // 获取 Search组件的数据
 export const reqSearchInfo = (params) => myAxios({url:'/list',method:'post',data:params})
@@ -55,5 +62,6 @@ export const reqUserLogout = () => myAxios({url:'/user/passport/logout',method:'
 // /api/user/passport/auth/getUserInfo      请求方式：get   
 export const reqGetUserInfo = () => myAxios({url:'/user/passport/auth/getUserInfo',method:'get'})
 
-
-
+// 获取订单交易信息
+// /api/order/auth/trade    请求方式：get   参数：无
+export const reqGetTradeInfo = () => myAxios({url:'/order/auth/trade',method:'get'})
