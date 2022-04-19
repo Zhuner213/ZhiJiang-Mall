@@ -2,7 +2,7 @@
   <div class="trade-container">
     <h3 class="title">填写并核对订单信息</h3>
     <div class="content">
-      <h5 class="receive">订单号：{{tradeNo}}</h5>
+      <h5 class="receive">交易序列号：{{tradeNo}}</h5>
       <h5 class="receive">收件人信息</h5>
       <!-- 收件人列表 -->
       <div class="address clearFix" v-for="(user, index) in userAddressList" :key="user.id">
@@ -50,7 +50,7 @@
       </div>
       <div class="bbs">
         <h5>买家留言：</h5>
-        <textarea placeholder="建议留言前先与商家沟通确认" class="remarks-cont"></textarea>
+        <textarea placeholder="建议留言前先与商家沟通确认" class="remarks-cont" v-model="orderComment"></textarea>
 
       </div>
       <div class="line"></div>
@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="sub clearFix">
-      <router-link class="subBtn" to="/pay">提交订单</router-link>
+      <a class="subBtn" @click="submitOrder">提交订单</a>
     </div>
   </div>
 </template>
@@ -99,10 +99,12 @@
       return {
         // 收件人信息
         userAddressList: [],
-        // 订单号
+        // 交易序列号
         tradeNo: '',
         // 购买的商品的信息
         goodsList: [],
+        // 订单备注留言
+        orderComment: '',
         // 购买商品的总价
         totalAmount: 0
       }
@@ -133,7 +135,7 @@
           alert('请求收件人信息出错')
         }
       },
-      // 向服务器发请求获取订单交易信息
+      // 向服务器发请求获取订单交易页信息
       async getTradeInfo() {
         const response = await this.$api.reqGetTradeInfo()
         // 如果向服务器请求数据成功，就在data中存储一下获取到的相关信息信息
@@ -156,6 +158,32 @@
           item.isDefault = 0
           if(index == clickIndex) item.isDefault = 1
         })
+      },
+      // 点击提交订单
+      async submitOrder() {
+        // 整合要向服务器发送请求的参数对象
+        const orderInfo = {
+          // 收件人姓名
+          consignee: this.userAddressObj.consignee,
+          // 收件人电话
+          consigneeTel: this.userAddressObj.phoneNum,
+          // 收件地址
+          deliveryAddress: this.userAddressObj.userAddress,
+          // 支付方式
+          paymentWay: 'ONLINE', // 默认为在线支付
+          // 订单备注
+          orderComment: this.orderComment,
+          // 存储多个商品对象的数组
+          orderDetailList: this.goodsList
+        }
+        const response = await this.$api.reqSubmitOrder(this.tradeNo,orderInfo)
+        // 如果订单提交成功，则跳转到支付页面（且携带订单id为query参数一起跳转）
+        if(response.code == 200) {
+          this.$router.push(`/pay?orderId=${response.data}`)
+        }else{
+          // 如果订单提交失败，则不进行跳转，告诉用户失败的原因
+          alert(response.message)
+        }
       }
     },
     mounted() {

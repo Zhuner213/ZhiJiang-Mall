@@ -62,6 +62,19 @@ export const reqUserLogout = () => myAxios({url:'/user/passport/logout',method:'
 // /api/user/passport/auth/getUserInfo      请求方式：get   
 export const reqGetUserInfo = () => myAxios({url:'/user/passport/auth/getUserInfo',method:'get'})
 
-// 获取订单交易信息
+// 获取订单交易页信息
 // /api/order/auth/trade    请求方式：get   参数：无
 export const reqGetTradeInfo = () => myAxios({url:'/order/auth/trade',method:'get'})
+
+// 提交订单
+// /api/order/auth/submitOrder?tradeNo={tradeNo}    请求方式：post  
+// 参数：tradeNo(交易序列号(拼接在路径中))、consignee、consigneeTel、deliveryAddress、paymentWay、orderComment、orderDetailList
+export const reqSubmitOrder = (tradeNo,data) => myAxios({url:`/order/auth/submitOrder?tradeNo=${tradeNo}`,method:'post',data})
+
+// 获取订单支付信息
+// //api/payment/weixin/createNative/{orderId}  请求方式：get   参数：orderId（string）
+export const reqGetPaymentInfo = (orderId) => myAxios({url:`/payment/weixin/createNative/${orderId}`,method:'get'})
+
+// 查询支付订单状态
+// /api/payment/weixin/queryPayStatus/{orderId}     请求方式：get   参数：orderId（string）
+export const reqQueryPayStatus = (orderId) => myAxios({url:`/payment/weixin/queryPayStatus/${orderId}`,method:'get'})

@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+// 单独按需引入 elementUI 的消息弹框
+import { MessageBox } from 'element-ui';
+// 引入 elementUI 的样式文件
+import 'element-ui/lib/theme-chalk/index.css';
 // 引入 api 文件
 import * as api from './api'
 // 引入路由文件
@@ -15,6 +19,10 @@ import store from './store'
 import './mock/mockServe'
 // 引入 swiper 的样式
 import 'swiper/css/swiper.css'
+
+Vue.component(MessageBox.name, MessageBox);
+Vue.prototype.$msgbox = MessageBox;
+
 // 把 TypeNav组件 注册为全局组件
 Vue.component(TypeNav.name, TypeNav)
 // 把 Pagination 分页器组件 注册为全局组件

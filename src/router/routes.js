@@ -8,6 +8,7 @@ import AddCartSuccess from '../pages/AddCartSuccess'
 import ShopCart from '../pages/ShopCart'
 import Trade from '../pages/Trade'
 import Pay from '../pages/Pay'
+import PaySuccess from '../pages/PaySuccess'
 
 export default [
     {
@@ -76,6 +77,14 @@ export default [
         name: 'pay',
         path: '/pay',
         component: Pay,
+        meta: {
+            showFooter: true // 在当前路由是否展示 Footer组件
+        }
+    },
+    {
+        name: 'paysuccess',
+        path: '/paysuccess',
+        component: PaySuccess,
         meta: {
             showFooter: true // 在当前路由是否展示 Footer组件
         }
