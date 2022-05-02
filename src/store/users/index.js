@@ -46,6 +46,7 @@ const actions = {
             // 若服务器那边清除成功，则我们前台这边也要清除相关数据（ 本地存储的token 和 仓库中的userInfo ）
             alert('退出成功！')
             localStorage.clear('token')
+            router.push('/login')
             commit('USERLOGOUT')
         }
     },

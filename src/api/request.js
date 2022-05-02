@@ -21,7 +21,7 @@ const myAxios = axios.create({
 // 请求拦截器：在发请求之前，请求拦截器可以监测到，可以在发出请求之前做一些操作
 myAxios.interceptors.request.use((config) => {
     // config：配置对象，里面有一个很重要的属性：headers 请求头
-    config.headers.userTempId = 'DianaZZC'
+    // config.headers.userTempId = 'DianaZZC'
     config.headers.token = localStorage.getItem('token')
     // 进度条开始动
     nprogress.start()

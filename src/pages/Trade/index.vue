@@ -210,6 +210,7 @@
       border: 1px solid rgb(221, 221, 221);
       padding: 25px;
       box-sizing: border-box;
+      background: #fff;
 
       .receive,
       .pay {
@@ -325,7 +326,7 @@
       .detail {
         width: 1080px;
 
-        background: #feedef;
+        background: #fff;
         padding: 15px;
         margin: 2px auto 0;
 
@@ -414,7 +415,8 @@
       padding: 10px;
       margin: 10px auto;
       text-align: right;
-      background-color: #f4f4f4;
+      // background-color: #f4f4f4;
+      background: #fff;
       border: 1px solid #ddd;
 
       div {

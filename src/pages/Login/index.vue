@@ -92,15 +92,17 @@
         width: 1200px;
         height: 487px;
         margin: 0 auto;
-        background: url(./images/loginbg.png) no-repeat;
+        // background: url(./images/loginbg.png) no-repeat;
+        background: #e93854;
       }
 
       .loginform {
+        margin: 0 auto;
         width: 420px;
         height: 406px;
         box-sizing: border-box;
         background: #fff;
-        float: right;
+        // float: right;
         top: 45px;
         position: relative;
         padding: 20px;

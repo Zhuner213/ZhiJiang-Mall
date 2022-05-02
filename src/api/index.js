@@ -78,3 +78,7 @@ export const reqGetPaymentInfo = (orderId) => myAxios({url:`/payment/weixin/crea
 // 查询支付订单状态
 // /api/payment/weixin/queryPayStatus/{orderId}     请求方式：get   参数：orderId（string）
 export const reqQueryPayStatus = (orderId) => myAxios({url:`/payment/weixin/queryPayStatus/${orderId}`,method:'get'})
+
+// 获取我的订单列表
+// /api/order/auth/{page}/{limit}   请求方式：get   参数：page（页码）、limit（每页显示数量）
+export const reqGetOrderList = (page,limit) => myAxios({url:`/order/auth/${page}/${limit}`,method:'get'})

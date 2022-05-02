@@ -24,10 +24,28 @@ export const router = new VueRouter({
 })
 
 // 设置全局路由前置守卫
-// router.beforeEach((to, from, next) => {
-//     console.log('beforeEach', to, from)
-//     next()
-// })
+router.beforeEach((to, from, next) => {
+    // 路由守卫要限制一下用户的行为
+    // 这里要分为：用户登录了 和 用户未登录（游客状态）
+    if(localStorage.getItem('token')) {
+        // 如果用户已经登录了，则不应该能再回到登录页面
+        if(to.path == '/login') {
+            next(false)
+        }else{
+            next()
+        }
+    }else{
+        // 如果用户没登录，是不可以前往：购物车页面、我的订单页面、成功加入购物车页面
+        // 这时自动跳转到登录页
+        if(to.path=='/shopcart' || to.path=='/center'|| to.path.indexOf('addcartsuccess') != -1) { 
+            alert('请先登录哦！')
+            next('/login')
+        }else{
+            next()
+        }
+    }
+    
+})
 
 // 设置全局路由后置守卫
 // router.afterEach((to, from) => {

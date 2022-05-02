@@ -20,6 +20,7 @@ import './mock/mockServe'
 // 引入 swiper 的样式
 import 'swiper/css/swiper.css'
 
+// 注册一下 elementUI 的 MessageBox组件
 Vue.component(MessageBox.name, MessageBox);
 Vue.prototype.$msgbox = MessageBox;
 

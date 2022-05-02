@@ -17,7 +17,7 @@
                 @mouseenter="changeIndex(index)"
                 :class="{ cur: index === currentIndex }"
               >
-                <h3>
+                <h3 v-if="index<15">
                   <a
                     :data-categoryName="c1.categoryName"
                     :data-category1Id="c1.categoryId"
@@ -30,7 +30,7 @@
                   <div class="subitem">
                     <!-- 我是第二级 -->
                     <dl
-                      class="fore"
+                      class="fore clearfix"
                       v-for="c2 in c1.categoryChild"
                       :key="c2.categoryId"
                     >
@@ -41,17 +41,17 @@
                         >
                           {{ c2.categoryName }}
                         </a>
+                        <i class="iconfont icon-icon-test63"></i>
                       </dt>
                       <dd>
                         <!-- 我是第三级 -->
-                        <em v-for="c3 in c2.categoryChild" :key="c3.categoryId">
                           <a
+                            v-for="c3 in c2.categoryChild" :key="c3.categoryId"
                             :data-categoryName="c3.categoryName"
                             :data-category3Id="c3.categoryId"
                           >
                             {{ c3.categoryName }}
                           </a>
-                        </em>
                       </dd>
                     </dl>
                   </div>
@@ -62,14 +62,14 @@
         </transition>
       </div>
       <nav class="nav">
-        <a href="###">服装城</a>
-        <a href="###">美妆馆</a>
-        <a href="###">尚品汇超市</a>
-        <a href="###">全球购</a>
-        <a href="###">闪购</a>
-        <a href="###">团购</a>
-        <a href="###">有趣</a>
-        <a href="###">秒杀</a>
+        <a>服装城</a>
+        <a>美妆馆</a>
+        <a>枝江超市</a>
+        <a>枝江生鲜</a>
+        <a>闪购</a>
+        <a>团购</a>
+        <a>枝江国际</a>
+        <a>秒杀</a>
       </nav>
     </div>
   </div>
@@ -161,6 +161,7 @@ export default {
 
 <style lang="less">
 .type-nav {
+  background: #fff;
   border-bottom: 2px solid #e1251b;
 
   .container {
@@ -176,16 +177,17 @@ export default {
       line-height: 45px;
       text-align: center;
       color: #fff;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
     }
 
     .nav {
       a {
+        font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial;
         height: 45px;
-        margin: 0 22px;
+        margin: 0 25px;
         line-height: 45px;
-        font-size: 16px;
+        font-size: 15px;
         color: #333;
       }
     }
@@ -193,11 +195,12 @@ export default {
     .sort {
       position: absolute;
       left: 0;
-      top: 45px;
+      top: 52px;
       width: 210px;
-      height: 461px;
+      height: 455px;
       position: absolute;
-      background: #fafafa;
+      background: #fefefe;
+      color: #636363;
       z-index: 999;
 
       .all-sort-list2 {
@@ -211,7 +214,12 @@ export default {
             margin: 0;
 
             a {
-              color: #333;
+              cursor: pointer;
+              transition: color .2s ease;
+            }
+
+            a:hover {
+              color: #c81623;
             }
           }
 
@@ -220,16 +228,18 @@ export default {
             position: absolute;
             width: 734px;
             min-height: 460px;
-            background: #f7f7f7;
+            background: #fff;
             left: 210px;
-            border: 1px solid #ddd;
+            border: 1px solid #f7f7f7;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.30);
             top: 0;
             z-index: 9999 !important;
 
             .subitem {
               float: left;
-              width: 650px;
+              width: 734px;
               padding: 0 4px 0 8px;
+              font-size: 12px;
 
               dl {
                 border-top: 1px solid #eee;
@@ -243,26 +253,31 @@ export default {
 
                 dt {
                   float: left;
-                  width: 54px;
+                  width: 66px;
                   line-height: 22px;
-                  text-align: right;
+                  text-align: left;
                   padding: 3px 6px 0 0;
                   font-weight: 700;
+                  white-space: nowrap;
+
+                  i {
+                    
+                  }
                 }
 
                 dd {
                   float: left;
-                  width: 415px;
+                  width: 600px;
                   padding: 3px 0 0;
-                  overflow: hidden;
+                  // overflow: hidden;
 
-                  em {
+                  a {
                     float: left;
                     height: 14px;
                     line-height: 14px;
                     padding: 0 8px;
                     margin-top: 5px;
-                    border-left: 1px solid #ccc;
+                    color: #666;
                   }
                 }
               }
@@ -277,7 +292,7 @@ export default {
         }
 
         .cur {
-          background: skyblue;
+          background: #d9d9d9;
         }
       }
     }

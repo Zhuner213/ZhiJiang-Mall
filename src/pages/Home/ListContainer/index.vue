@@ -6,7 +6,7 @@
         <div class="swiper-container" id="mySwiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="imgs in bannerList" :key="imgs.id">
-              <img :src="imgs.imgUrl" />
+              <img :src="imgs.imgUrl"/>
             </div>
           </div>
           <!-- 如果需要分页器 -->
@@ -20,66 +20,66 @@
       <div class="right">
         <div class="news">
           <h4>
-            <em class="fl">尚品汇快报</em>
+            <em class="fl">枝江快报</em>
             <span class="fr tip">更多 ></span>
           </h4>
           <div class="clearix"></div>
           <ul class="news-list unstyled">
-            <li><span class="bold">[特惠]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[公告]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[特惠]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[公告]</span>备战开学季 全民半价购数码</li>
-            <li><span class="bold">[特惠]</span>备战开学季 全民半价购数码</li>
+            <li><span class="bold">[特惠]</span>关注嘉然，顿顿解馋</li>
+            <li><span class="bold">[公告]</span>关注嘉然，顿顿解馋</li>
+            <li><span class="bold">[特惠]</span>关注嘉然，顿顿解馋</li>
+            <li><span class="bold">[公告]</span>关注嘉然，顿顿解馋</li>
+            <li><span class="bold">[特惠]</span>关注嘉然，顿顿解馋</li>
           </ul>
         </div>
         <ul class="lifeservices">
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-huafei"></i>
             <span class="service-intro">话费</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-jipiao"></i>
             <span class="service-intro">机票</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-dianyingpiao_line"></i>
             <span class="service-intro">电影票</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-youxi"></i>
             <span class="service-intro">游戏</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-caipiao"></i>
             <span class="service-intro">彩票</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-jiayouzhan"></i>
             <span class="service-intro">加油站</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-guojijiudian"></i>
             <span class="service-intro">酒店</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-huochepiao"></i>
             <span class="service-intro">火车票</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-jingdongzhongchou"></i>
             <span class="service-intro">众筹</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-licaishouyi"></i>
             <span class="service-intro">理财</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
+            <i class="iconfont icon-lipinka"></i>
             <span class="service-intro">礼品卡</span>
           </li>
           <li class="life-item">
-            <i class="list-item"></i>
-            <span class="service-intro">白条</span>
+            <i class="iconfont icon-A"></i>
+            <span class="service-intro">枝江</span>
           </li>
         </ul>
         <div class="ads">
@@ -104,6 +104,7 @@ export default {
         this.$nextTick(() => {
           new Swiper(".swiper-container", {
             loop: true, // 循环模式选项
+            autoplay: true,
 
             // 如果需要分页器
             pagination: {
@@ -115,6 +116,7 @@ export default {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             },
+
           });
         });
       },
@@ -138,6 +140,17 @@ export default {
       height: 100%;
       padding: 5px;
       float: left;
+
+      .swiper-container {
+        width: 730px;
+        height: 455px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          
+        }
+      }
     }
 
     .right {
@@ -206,78 +219,6 @@ export default {
             width: 60px;
             display: block;
           }
-
-          &:nth-child(1) {
-            .list-item {
-              background-position: 0px -5px;
-            }
-          }
-
-          &:nth-child(2) {
-            .list-item {
-              background-position: -62px -5px;
-            }
-          }
-
-          &:nth-child(3) {
-            .list-item {
-              background-position: -126px -5px;
-            }
-          }
-
-          &:nth-child(4) {
-            .list-item {
-              background-position: -190px -5px;
-            }
-          }
-
-          &:nth-child(5) {
-            .list-item {
-              background-position: 0px -76px;
-            }
-          }
-
-          &:nth-child(6) {
-            .list-item {
-              background-position: -62px -76px;
-            }
-          }
-
-          &:nth-child(7) {
-            .list-item {
-              background-position: -126px -76px;
-            }
-          }
-
-          &:nth-child(8) {
-            .list-item {
-              background-position: -190px -76px;
-            }
-          }
-
-          &:nth-child(9) {
-            .list-item {
-              background-position: 0px -146px;
-            }
-          }
-
-          &:nth-child(10) {
-            .list-item {
-              background-position: -62px -146px;
-            }
-          }
-
-          &:nth-child(11) {
-            .list-item {
-              background-position: -126px -146px;
-            }
-          }
-
-          &:nth-child(12) {
-            .list-item {
-              background-position: -190px -146px;
-            }
-          }
         }
       }
 
@@ -285,6 +226,8 @@ export default {
         margin-top: 5px;
 
         img {
+          width: 248px;
+          height: 75px;
           opacity: 0.8;
           transition: all 400ms;
 

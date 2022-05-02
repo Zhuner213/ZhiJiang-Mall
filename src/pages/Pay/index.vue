@@ -75,9 +75,6 @@
 import QRCode from "qrcode";
 export default {
   name: "Pay",
-  data() {
-    return {};
-  },
   computed: {
     // 从$route里面拿一下订单号
     orderId() {

@@ -16,9 +16,9 @@
           </p>
         </div>
         <div class="typeList">
-          <a>枝江商城首页</a>
-          <a @click="goCart">我的购物车</a>
-          <a>我的枝江</a>
+          <router-link to="/home">枝江商城首页</router-link>
+          <router-link to="/shopcart">我的购物车</router-link>
+          <router-link to="/center">我的订单</router-link>
           <a>枝江商城会员</a>
           <a>企业采购</a>
           <a>关注嘉然</a>
@@ -31,7 +31,7 @@
     <div class="bottom">
       <h1 class="logoArea">
         <router-link class="logo" to="/home">
-          <img src="./images/logo.svg" alt="" />
+          <img src="./images/logo.svg"/>
         </router-link>
       </h1>
       <div class="searchArea">
@@ -107,10 +107,6 @@ export default {
     userLogout() {
       // 向服务器发请求退出登录，
       this.$store.dispatch('users/userLogout')
-    },
-    // 点击 '我的购物车' 跳转到购物车页面
-    goCart() {
-      this.$router.push('/shopcart')
     }
   },
   mounted() {
@@ -122,6 +118,7 @@ export default {
 
 <style lang="less">
     .header {
+        background: #fff;
         &>.top {
             background-color: #474747;
             height: 30px;
