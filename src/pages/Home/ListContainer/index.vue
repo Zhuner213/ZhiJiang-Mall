@@ -6,7 +6,7 @@
         <div class="swiper-container" id="mySwiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="imgs in bannerList" :key="imgs.id">
-              <img :src="imgs.imgUrl"/>
+              <img :src="imgs.imgUrl" />
             </div>
           </div>
           <!-- 如果需要分页器 -->
@@ -18,20 +18,54 @@
         </div>
       </div>
       <div class="right">
+        <!-- 登录模块 -->
+        <div class="login">
+          <div class="login-top clearfix">
+            <div v-if="!userInfo" class="user-avatar fl">
+              <router-link to="/login">
+                <img src="./images/avatar.jpg" />
+              </router-link>
+            </div>
+            <div v-else class="user-avatar fl">
+                <img src="./images/avatar-login.jpg" />
+            </div>
+            <div v-if="!userInfo" class="login-button fr">
+              <router-link to="/login">Hi~欢迎光临小狼堡！</router-link>
+              <p>
+                <router-link to="/login">登录</router-link>|<router-link to="/register">注册</router-link>
+              </p>
+            </div>
+            <div v-else class="login-button fr">
+              <a>Hi~欢迎你！{{userInfo.nickName}}</a>
+              <p>
+                <a @click="userLogout" style="cursor:pointer">退出登录</a>
+              </p>
+            </div>
+          </div>
+          <div class="login-bottom">
+            <a class="welfare">新人福利</a>
+            <a class="vip">啵啵会员</a>
+          </div>
+        </div>
+        <!-- 新闻快报板块 -->
         <div class="news">
           <h4>
-            <em class="fl">枝江快报</em>
+            <span class="fl">枝江快报</span>
             <span class="fr tip">更多 ></span>
           </h4>
           <div class="clearix"></div>
           <ul class="news-list unstyled">
-            <li><span class="bold">[特惠]</span>关注嘉然，顿顿解馋</li>
-            <li><span class="bold">[公告]</span>关注嘉然，顿顿解馋</li>
-            <li><span class="bold">[特惠]</span>关注嘉然，顿顿解馋</li>
-            <li><span class="bold">[公告]</span>关注嘉然，顿顿解馋</li>
-            <li><span class="bold">[特惠]</span>关注嘉然，顿顿解馋</li>
+            <li>
+              <span class="news-tag">最新</span>风吹月光打湿了我，不必闪躲
+            </li>
+            <li>
+              <span class="news-tag">热议</span>星星都在为我唱歌，还怕什么
+            </li>
+            <li><span class="news-tag">热门</span>字节跳动黑心企业压榨员工</li>
+            <li><span class="news-tag">热门</span>请朝夕光年管理层正面回应</li>
           </ul>
         </div>
+        <!-- 生活服务板块 -->
         <ul class="lifeservices">
           <li class="life-item">
             <i class="iconfont icon-huafei"></i>
@@ -54,8 +88,8 @@
             <span class="service-intro">彩票</span>
           </li>
           <li class="life-item">
-            <i class="iconfont icon-jiayouzhan"></i>
-            <span class="service-intro">加油站</span>
+            <i class="iconfont icon-didaomeishi"></i>
+            <span class="service-intro">美食</span>
           </li>
           <li class="life-item">
             <i class="iconfont icon-guojijiudian"></i>
@@ -82,9 +116,6 @@
             <span class="service-intro">枝江</span>
           </li>
         </ul>
-        <div class="ads">
-          <img src="./images/ad1.png" />
-        </div>
       </div>
     </div>
   </div>
@@ -97,6 +128,14 @@ export default {
   name: "ListContainer",
   computed: {
     ...mapState("home", ["bannerList"]),
+    ...mapState('users',['userInfo'])
+  },
+  methods: {
+    // 用户退出登录
+    userLogout() {
+      // 向服务器发请求退出登录，
+      this.$store.dispatch('users/userLogout')
+    }
   },
   watch: {
     bannerList: {
@@ -116,12 +155,11 @@ export default {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             },
-
           });
         });
       },
     },
-  }
+  },
 };
 </script>
 
@@ -148,33 +186,119 @@ export default {
         img {
           width: 100%;
           height: 100%;
-          
         }
       }
     }
 
     .right {
+      margin-top: 5px;
+      background: white;
       float: left;
       width: 250px;
 
-      .news {
-        border: 1px solid #e4e4e4;
-        margin-top: 5px;
+      .login {
+        height: 102px;
+        padding: 10px 20px;
 
+        .login-top {
+          .user-avatar {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 15%);
+
+            a {
+              display: block;
+              width: 50px;
+              height: 50px;
+            }
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              // display: block;
+            }
+          }
+
+          .login-button {
+            width: 150px;
+            height: 50px;
+            font-size: 12px;
+            margin-top: 5px;
+
+
+            a {
+              color: #666666;
+              transition: all 0.3s ease;
+            }
+
+            p {
+              color: #333333;
+              padding: 10px 0;
+
+              a {
+                margin: 0 4px;
+                color: #333333;
+              }
+            }
+
+            a:hover {
+              color: #c81623;
+            }
+          }
+        }
+
+        .login-bottom {
+          text-align: center;
+          margin-top: 15px;
+
+          a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            width: 75px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 12px;
+            color: #fff;
+            border-radius: 13px;
+            background: #e1251b;
+            -webkit-transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
+          }
+
+          .vip {
+            background: #363634;
+            color: #e5d790;
+          }
+
+          .vip:hover {
+            background-color: #c81623;
+            color: #fff;
+          }
+
+          .welfare:hover {
+            background-color: #C81623;
+          }
+        }
+      }
+
+      .news {
         h4 {
-          border-bottom: 1px solid #e4e4e4;
-          padding: 5px 10px;
-          margin: 5px 5px 0;
+          padding: 0px 10px;
           line-height: 22px;
           overflow: hidden;
           font-size: 14px;
 
           .fl {
             float: left;
+            color: #333333;
           }
 
           .fr {
             float: right;
+            color: #999999;
             font-size: 12px;
             font-weight: 400;
           }
@@ -184,23 +308,41 @@ export default {
           padding: 5px 15px;
           line-height: 26px;
           font-size: 12px;
+          color: #666666;
 
-          .bold {
-            font-weight: 700;
+
+          li {
+            transition: all 0.3s ease;
+            cursor: pointer;
+          }
+
+          li:hover {
+            color: #c81623;
+          }
+
+          .news-tag {
+            display: inline-block;
+            position: relative;
+            font-size: 12px;
+            height: 16px;
+            width: 35px;
+            line-height: 16px;
+            text-align: center;
+            vertical-align: 0;
+            color: #e1251b;
+            background-color: rgba(225, 37, 27, 0.08);
+            margin-right: 6px;
           }
         }
       }
 
       .lifeservices {
-        border-right: 1px solid #e4e4e4;
+        padding-top: 6px;
         overflow: hidden;
         display: flex;
         flex-wrap: wrap;
 
         .life-item {
-          border-left: 1px solid #e4e4e4;
-          border-bottom: 1px solid #e4e4e4;
-          margin-right: -1px;
           height: 64px;
           text-align: center;
           position: relative;
@@ -208,7 +350,6 @@ export default {
           width: 25%;
 
           .list-item {
-            background-image: url(./images/icons.png);
             width: 61px;
             height: 40px;
             display: block;
@@ -219,20 +360,21 @@ export default {
             width: 60px;
             display: block;
           }
-        }
-      }
 
-      .ads {
-        margin-top: 5px;
+          i {
+            color: #666666;
+            font-size: 24px;
+            transition: all 0.2s ease;
+          }
 
-        img {
-          width: 248px;
-          height: 75px;
-          opacity: 0.8;
-          transition: all 400ms;
+          i:hover {
+            font-size: 28px;
+            color: #333333;
+          }
 
-          &:hover {
-            opacity: 1;
+          span {
+            font-size: 12px;
+            color: #333333;
           }
         }
       }

@@ -5,21 +5,41 @@
       <ul class="recommend">
         <li class="clock">
           <div class="time">
-            <img src="./images/clock.png" />
+            <img src="./images/yugui.jpg">
             <h3>今日推荐</h3>
           </div>
         </li>
-        <li class="banner">
-          <img src="./images/today01.png" />
+        <li class="banner clearfix">
+          <img src="./images/today01.jpg" class="fl"/>
+          <p class="fl">
+            <span class="title">阿草U型枕</span>
+            <br>
+            <span class="price">¥79</span>
+          </p>
         </li>
-        <li class="banner">
-          <img src="./images/today02.png" />
+        <li class="banner clearfix">
+          <img src="./images/today02.jpg" class="fl"/>
+          <p class="fl">
+            <span class="title">很方很好rua阿草抱枕</span>
+            <br>
+            <span class="price">¥104</span>
+          </p>
         </li>
-        <li class="banner">
-          <img src="./images/today03.png" />
+        <li class="banner clearfix">
+          <img src="./images/today03.jpg" class="fl"/>
+          <p class="fl">
+            <span class="title">高达1米的阿草抱枕</span>
+            <br>
+            <span class="price">¥199</span>
+          </p>
         </li>
-        <li class="banner">
-          <img src="./images/today04.png" />
+        <li class="banner clearfix">
+          <img src="./images/today04.jpg" class="fl"/>
+          <p class="fl">
+            <span class="title">阿草解压玩偶</span>
+            <br>
+            <span class="price">¥59</span>
+          </p>
         </li>
       </ul>
     </div>
@@ -40,40 +60,59 @@ export default {
 
             .recommend {
                 height: 165px;
-                background-color: #eaeaea;
+                background-color: #ffffff;
                 margin: 10px 0;
                 display: flex;
 
                 .clock {
                     width: 16.67%;
-                    background-color: #5c5251;
-                    color: #fff;
+                    background-color: #ffffff;
+                    color: #333333;
                     font-size: 18px;
                     text-align: center;
 
-                    .time {
-                        padding: 30px 0;
+                    .time {                  
+
+                        img {
+                          width: 120px;
+                          height: 120px;
+                        }
                     }
 
                     h3 {
-                        margin: 9px 0;
-                        font-weight: 700;
-                        font-size: 18px;
-                        line-height: 30.06px;
+                        font-weight: 200;
+                        font-size: 22px;
                     }
                 }
 
                 .banner {
                     width: 20.83%;
-
+                    
                     img {
-                        width: 100%;
+                        cursor: pointer;
                         height: 100%;
+                        display: block;
                         transition: all 400ms;
+                        margin-right: 5px;
 
                         &:hover {
                             opacity: 0.8;
                         }
+                    }
+
+                    p {
+                      width: 30%;
+                      padding-top: 50px;
+
+                    
+                      .title {
+                        font-size: 12px;
+                      }
+
+                      .price {
+                        font-size: 14px;
+                        color: #E1251B;
+                      }
                     }
                 }
             }

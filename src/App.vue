@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header/>
+    <Header v-if="$route.meta.showHeader"/>
     <router-view></router-view>  
-    <Footer v-show="$route.meta.showFooter"/>
+    <Footer v-show="$route.meta.showFooter" :class="{atHome:$route.name=='home'}"/>
   </div>
 </template>
 
@@ -25,5 +25,7 @@
 </script>
 
 <style scoped>
-
+.atHome {
+  background: #f4f4f4;
+}
 </style>

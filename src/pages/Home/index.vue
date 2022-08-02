@@ -1,13 +1,11 @@
 <template>
-    <div>
+    <div class="index">
         <TypeNav/>
         <ListContainer/>
         <Recommend/>
         <Rank/>
         <Like/>
         <Floor v-for="floorData in floorList" :key="floorData.id" :floorData="floorData"/>
-        <!-- <Floor  :floorData="floorList[0]"/>
-        <Floor  :floorData="floorList[1]"/> -->
         <Brand/>
     </div>
 </template>
@@ -37,7 +35,7 @@
 </script>
 
 <style>
-body {
-    background: #f5f5f5;
+.index {
+    background: #f4f4f4;
 }
 </style>

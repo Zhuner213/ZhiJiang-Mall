@@ -8,6 +8,7 @@ export default [
         component: () => import('../pages/Home'),
         meta: {
             showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         }
     },
     {
@@ -15,6 +16,7 @@ export default [
         component: () => import('../pages/Login'),
         meta: {
             showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: false, // 在当前路由是否展示 Header组件
         }
     },
     {
@@ -22,6 +24,7 @@ export default [
         component: () => import('../pages/Register'),
         meta: {
             showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: false, // 在当前路由是否展示 Header组件
         }
     },
     {
@@ -30,6 +33,7 @@ export default [
         component: () => import('../pages/Search'),
         meta: {
             showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         }
     },
     {
@@ -38,6 +42,7 @@ export default [
         component: () => import('../pages/Detail'),
         meta: {
             showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         }
     },
     {
@@ -45,7 +50,8 @@ export default [
         path: '/addcartsuccess/:skuid/:skuNum',
         component: () => import('../pages/AddCartSuccess'),
         meta: {
-            showFooter: true // 在当前路由是否展示 Footer组件
+            showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true // 在当前路由是否展示 Header组件
         },
         beforeEnter: (to, from, next) => {
             // 在用户已登录的情况下
@@ -61,7 +67,8 @@ export default [
         path: '/shopcart',
         component: () => import('../pages/ShopCart'),
         meta: {
-            showFooter: true // 在当前路由是否展示 Footer组件
+            showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true // 在当前路由是否展示 Header组件
         }
 
     },
@@ -70,7 +77,8 @@ export default [
         path: '/trade',
         component: () => import('../pages/Trade'),
         meta: {
-            showFooter: true // 在当前路由是否展示 Footer组件
+            showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         },
         beforeEnter: (to, from, next) => {
             // 订单交易页只能由点击购物车页面的结算进来
@@ -86,7 +94,8 @@ export default [
         path: '/pay',
         component: () => import('../pages/Pay'),
         meta: {
-            showFooter: true // 在当前路由是否展示 Footer组件
+            showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         },
         beforeEnter: (to, from, next) => {
             // 支付页只能由订单交易页面进来
@@ -102,7 +111,8 @@ export default [
         path: '/paysuccess',
         component: () => import('../pages/PaySuccess'),
         meta: {
-            showFooter: true // 在当前路由是否展示 Footer组件
+            showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         },
         beforeEnter: (to, from, next) => {
             // 支付成功页只能由支付页面进来
@@ -118,7 +128,8 @@ export default [
         path: '/center',
         component: () => import('../pages/Center'),
         meta: {
-            showFooter: true // 在当前路由是否展示 Footer组件
+            showFooter: true, // 在当前路由是否展示 Footer组件
+            showHeader: true, // 在当前路由是否展示 Header组件
         }
     },
     // 进行路由的重定向，使页面一进去就是主页

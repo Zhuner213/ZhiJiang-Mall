@@ -17,7 +17,7 @@
                 @mouseenter="changeIndex(index)"
                 :class="{ cur: index === currentIndex }"
               >
-                <h3 v-if="index<15">
+                <h3 v-if="index < 15">
                   <a
                     :data-categoryName="c1.categoryName"
                     :data-category1Id="c1.categoryId"
@@ -35,23 +35,27 @@
                       :key="c2.categoryId"
                     >
                       <dt>
-                        <a
-                          :data-categoryName="c2.categoryName"
-                          :data-category2Id="c2.categoryId"
-                        >
-                          {{ c2.categoryName }}
+                        <a>
+                          <a
+                            :data-categoryName="c2.categoryName"
+                            :data-category2Id="c2.categoryId"
+                          >
+                            {{ c2.categoryName }}
+                          </a>
+                          <i class="iconfont icon-icon-test63"></i>
                         </a>
-                        <i class="iconfont icon-icon-test63"></i>
                       </dt>
+
                       <dd>
                         <!-- 我是第三级 -->
-                          <a
-                            v-for="c3 in c2.categoryChild" :key="c3.categoryId"
-                            :data-categoryName="c3.categoryName"
-                            :data-category3Id="c3.categoryId"
-                          >
-                            {{ c3.categoryName }}
-                          </a>
+                        <a
+                          v-for="c3 in c2.categoryChild"
+                          :key="c3.categoryId"
+                          :data-categoryName="c3.categoryName"
+                          :data-category3Id="c3.categoryId"
+                        >
+                          {{ c3.categoryName }}
+                        </a>
                       </dd>
                     </dl>
                   </div>
@@ -113,9 +117,11 @@ export default {
       const element = event.target;
       // 我们可以获取到当前触发这个路由跳转事件的节点，带有 data-categoryName 属性的节点一定是 a标签
       // 通过 dataset 属性，可以获取到当前节点的自定义属性与属性值
-      const { categoryname, category1id, category2id, category3id } = element.dataset;
+      const { categoryname, category1id, category2id, category3id } =
+        element.dataset;
 
-      if (categoryname) { // 如果点击的是 a标签
+      if (categoryname) {
+        // 如果点击的是 a标签
         const location = { name: "search" };
         const query = { categoryName: categoryname };
 
@@ -131,7 +137,7 @@ export default {
         }
 
         // 如果当前页面还有 params参数 的话，跳转的时候还要带上 params参数
-        location.params = this.$route.params
+        location.params = this.$route.params;
 
         // 将参数整理好，动态给 location 对象添加 query属性
         location.query = query;
@@ -183,17 +189,22 @@ export default {
 
     .nav {
       a {
-        font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial;
+        cursor: pointer;
+        font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial;
         height: 45px;
         margin: 0 25px;
         line-height: 45px;
         font-size: 15px;
         color: #333;
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: #C81623;
       }
     }
 
     .sort {
-      position: absolute;
       left: 0;
       top: 52px;
       width: 210px;
@@ -215,7 +226,7 @@ export default {
 
             a {
               cursor: pointer;
-              transition: color .2s ease;
+              transition: color 0.2s ease;
             }
 
             a:hover {
@@ -226,12 +237,12 @@ export default {
           .item-list {
             // display: none;
             position: absolute;
-            width: 734px;
-            min-height: 460px;
+            width: 750px;
+            min-height: 453px;
             background: #fff;
             left: 210px;
             border: 1px solid #f7f7f7;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.30);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
             top: 0;
             z-index: 9999 !important;
 
@@ -253,31 +264,41 @@ export default {
 
                 dt {
                   float: left;
-                  width: 66px;
-                  line-height: 22px;
-                  text-align: left;
-                  padding: 3px 6px 0 0;
+                  width: 85px;
+                  text-align: right;
                   font-weight: 700;
                   white-space: nowrap;
 
-                  i {
-                    
+                  a {
+                    display: inline-flex;
+                    justify-content: flex-end;
+                    cursor: pointer;
+                    transition: color 0.2s ease;
+                  }
+
+                  a:hover {
+                    color: #c81623;
                   }
                 }
 
                 dd {
+                  margin-top: 2px;
                   float: left;
                   width: 600px;
-                  padding: 3px 0 0;
-                  // overflow: hidden;
 
                   a {
+                    margin-bottom: 10px;
                     float: left;
                     height: 14px;
                     line-height: 14px;
                     padding: 0 8px;
-                    margin-top: 5px;
                     color: #666;
+                    transition: color 0.2s ease;
+                    cursor: pointer;
+                  }
+
+                  a:hover {
+                    color: #c81623;
                   }
                 }
               }
@@ -307,7 +328,7 @@ export default {
     }
     // 定义动画时间、速率
     .sort-enter-active {
-      transition: all .5s linear;
+      transition: all 0.5s linear;
     }
   }
 }

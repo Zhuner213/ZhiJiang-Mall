@@ -90,13 +90,6 @@ export default {
       }
     })
   },
-  // watch: {
-  //   floorData: {
-  //     handler() {
-  //       console.log('我在监听floorData')
-  //     }
-  //   }
-  // }
 };
 </script>
 

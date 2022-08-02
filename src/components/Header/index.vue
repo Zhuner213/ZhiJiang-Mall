@@ -6,8 +6,7 @@
         <div class="loginList">
           <p>枝江商城欢迎您！</p>
           <p v-if="!userInfo">
-            <span>请</span>
-            <router-link to="/login">登录</router-link>
+            <router-link to="/login">你好，请登录</router-link>
             <router-link to="/register" class="register">免费注册</router-link>
           </p>
           <p v-else>

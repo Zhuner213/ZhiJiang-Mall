@@ -1,33 +1,38 @@
 <template>
   <div class="login-container">
+    <!-- 顶部logo栏 -->
+    <div class="header">
+      <div class="logo-nav clearfix">
+        <img class="fl" src="./images/logo.png" @click="goHome">
+        <h1 class="fl">欢迎登录</h1>
+        <div class="ask fr"><i class="iconfont icon-icon-test4"></i> 调查问卷</div>
+      </div>
+    </div>
     <!-- 登录 -->
     <div class="login-wrap">
       <div class="login">
         <div class="loginform">
           <ul class="tab clearFix">
             <li>
-              <a href="##" style="border-right: 0;">扫描登录</a>
-            </li>
-            <li>
-              <a href="##" class="current">账户登录</a>
+              <a class="current">账户登录</a>
             </li>
           </ul>
 
           <div class="content">
             <form action="##">
               <div class="input-text clearFix">
-                <span></span>
+                <span>
+                  <i class="iconfont icon-icon-test37"></i>
+                </span>
                 <input type="text" placeholder="手机号" v-model="phone">
               </div>
               <div class="input-text clearFix">
-                <span class="pwd"></span>
+                <span>
+                  <i class="iconfont icon-icon-test28"></i>
+                </span>
                 <input type="password" placeholder="请输入密码" v-model="password">
               </div>
               <div class="setting clearFix">
-                <label class="checkbox inline">
-                  <input name="m1" type="checkbox" value="2" checked="">
-                  自动登录
-                </label>
                 <span class="forget">忘记密码？</span>
               </div>
               <button class="btn" @click="userLogin">登&nbsp;&nbsp;录</button>
@@ -35,10 +40,10 @@
 
             <div class="call clearFix">
               <ul>
-                <li><img src="./images/qq.png" alt=""></li>
-                <li><img src="./images/sina.png" alt=""></li>
-                <li><img src="./images/ali.png" alt=""></li>
-                <li><img src="./images/weixin.png" alt=""></li>
+                <li><i class="iconfont icon-icon-test79"></i></li>
+                <li><i class="iconfont icon-icon-test80"></i></li>
+                <li><i class="iconfont icon-icon-test82"></i></li>
+                <li><i class="iconfont icon-icon-test75"></i></li>
               </ul>
               <router-link class="register" to="/register">立即注册</router-link>
             </div>
@@ -61,6 +66,10 @@
       }
     },
     methods: {
+      // 点击logo跳转至主页
+      goHome() {
+        this.$router.push('/home')
+      },
       // 用户登录
       async userLogin() {
         // 封装用户登录信息的对象
@@ -84,25 +93,60 @@
 
 <style lang="less" scoped>
   .login-container {
+    .header {
+      width: 100%;
+      height: 100px;
+
+      .logo-nav {
+        width: 1000px;
+        height: 100px;
+        margin: 0 auto;
+
+        img {
+          width: 120px;
+          cursor: pointer;
+        }
+
+        h1 {
+          margin-left: 20px;
+          font-size: 26px;
+          margin-top: 40px;
+          font-weight: 200;
+        }
+
+        .ask {
+          height: 24px;
+          line-height: 24px;
+          color: #999999;
+          margin-top: 70px;
+          font-size: 12px;
+
+          i {
+            color: #B61D1D
+          }
+        }
+      }
+    }
+    
     .login-wrap {
       height: 487px;
-      background-color: #e93854;
+      background-color: #FEE9BE;
 
       .login {
-        width: 1200px;
-        height: 487px;
+        width: 990px;
+        height: 475px;
         margin: 0 auto;
-        // background: url(./images/loginbg.png) no-repeat;
-        background: #e93854;
+        background: url(./images/bkimg.jpg) no-repeat;
+        // background: #e93854;
       }
 
       .loginform {
-        margin: 0 auto;
-        width: 420px;
-        height: 406px;
+        // margin: 0 auto;
+        width: 400px;
+        height: 350px;
         box-sizing: border-box;
         background: #fff;
-        // float: right;
+        float: right;
         top: 45px;
         position: relative;
         padding: 20px;
@@ -110,8 +154,7 @@
         .tab {
 
           li {
-            width: 50%;
-            float: left;
+            width: 100%;
             text-align: center;
 
             a {
@@ -122,7 +165,7 @@
               font-size: 20px;
               font-weight: 700;
               color: #333;
-              border: 1px solid #ddd;
+              // border-bottom: 1px solid #ddd;
               box-sizing: border-box;
               text-decoration: none;
 
@@ -137,37 +180,41 @@
         }
 
         .content {
-          width: 380px;
-          height: 316px;
+          width: 355px;
+          height: 200px;
           box-sizing: border-box;
-          border: 1px solid #ddd;
-          border-top: none;
-          padding: 18px;
+          padding: 18px 18px 18px 24px;
 
           form {
-            margin: 15px 0 18px 0;
+            width: 320px;
+            margin: 0 auto;
             font-size: 12px;
             line-height: 18px;
 
             .input-text {
-              margin-bottom: 16px;
+              
+              height: 32px;
+              margin-bottom: 20px;
 
               span {
                 float: left;
                 width: 37px;
                 height: 32px;
                 border: 1px solid #ccc;
-                background: url(../../assets/images/icons.png) no-repeat -10px -201px;
                 box-sizing: border-box;
                 border-radius: 2px 0 0 2px;
+                text-align: center;
+                line-height: 32px;
+
+                i {
+                  font-size: 26px;
+                  color: #cccccc;
+                }
               }
 
-              .pwd {
-                background-position: -72px -201px;
-              }
 
               input {
-                width: 302px;
+                width: 280px;
                 height: 32px;
                 box-sizing: border-box;
                 border: 1px solid #ccc;
@@ -179,7 +226,6 @@
                 line-height: 22px;
                 padding-right: 8px;
                 padding-left: 8px;
-
                 border-radius: 0 2px 2px 0;
                 outline: none;
               }
@@ -191,6 +237,8 @@
               }
 
               .forget {
+                color: #666666;
+                display: inline-block;
                 float: right;
               }
             }
@@ -204,10 +252,11 @@
               word-spacing: 4px;
               border: 1px solid #e1251b;
               color: #fff;
-              width: 100%;
+              width: 310px;
               height: 36px;
               margin-top: 25px;
               outline: none;
+              cursor: pointer;
             }
           }
 
@@ -220,17 +269,26 @@
               li {
                 float: left;
                 margin-right: 5px;
+
+                i {
+                  font-size: 22px;
+                  color: #cccccc;
+                  cursor:pointer;
+                }
+
+                i:hover {
+                  color:#333
+                }
               }
             }
 
             .register {
+              color: #B61D1D;
               float: right;
               font-size: 15px;
-              line-height: 38px;
             }
 
             .register:hover {
-              color: #4cb9fc;
               text-decoration: underline;
             }
           }
