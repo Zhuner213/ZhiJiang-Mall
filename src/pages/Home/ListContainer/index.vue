@@ -61,8 +61,8 @@
             <li>
               <span class="news-tag">热议</span>星星都在为我唱歌，还怕什么
             </li>
-            <li><span class="news-tag">热门</span>字节跳动黑心企业压榨员工</li>
-            <li><span class="news-tag">热门</span>请朝夕光年管理层正面回应</li>
+            <li><span class="news-tag">热门</span>去见喜欢的人吧</li>
+            <li><span class="news-tag">热门</span>哪怕下雨也好</li>
           </ul>
         </div>
         <!-- 生活服务板块 -->
